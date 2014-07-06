@@ -727,7 +727,7 @@ static char ja_kvoContext;
     [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveLinear|UIViewAnimationOptionLayoutSubviews animations:^{
         self.centerPanelContainer.frame = _centerPanelRestingFrame;
         
-        if (self.state == JASidePanelLeftVisible) {
+        if (self.state == JASidePanelLeftVisible || self.state == JASidePanelRightVisible) {
           self.centerPanel.view.transform = CGAffineTransformMakeScale(0.8, 0.8);
         }
         else {
