@@ -148,6 +148,7 @@ static char ja_kvoContext;
     self.shouldDelegateAutorotateToVisiblePanel = YES;
     self.allowRightSwipe = YES;
     self.allowLeftSwipe = YES;
+    self.scalingPercentage = 0.85f;
 }
 
 #pragma mark - UIViewController
@@ -727,11 +728,13 @@ static char ja_kvoContext;
     [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveLinear|UIViewAnimationOptionLayoutSubviews animations:^{
         self.centerPanelContainer.frame = _centerPanelRestingFrame;
         
-        if (self.state == JASidePanelLeftVisible || self.state == JASidePanelRightVisible) {
-          self.centerPanel.view.transform = CGAffineTransformMakeScale(0.8, 0.8);
-        }
-        else {
-          self.centerPanel.view.transform = CGAffineTransformIdentity;
+        if (self.scalingPercentage < 1.0f) {
+	    if (self.state == JASidePanelLeftVisible || self.state == JASidePanelRightVisible) {
+	        self.centerPanel.view.transform = CGAffineTransformMakeScale(self.scalingPercentage, self.scalingPercentage);
+	    }
+	    else {
+	        self.centerPanel.view.transform = CGAffineTransformIdentity;
+	    }
         }
         
         [self styleContainer:self.centerPanelContainer animate:YES duration:duration];
