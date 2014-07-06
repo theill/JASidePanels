@@ -827,6 +827,7 @@ static char ja_kvoContext;
         [self _animateCenterPanel:shouldBounce completion:nil];
     } else {
         self.centerPanelContainer.frame = _centerPanelRestingFrame;
+        self.centerPanel.view.transform = CGAffineTransformMakeScale(self.scalingPercentage, self.scalingPercentage);
         [self styleContainer:self.centerPanelContainer animate:NO duration:0.0f];
         if (self.style == JASidePanelMultipleActive) {
             [self _layoutSideContainers:NO duration:0.0f];
@@ -849,6 +850,7 @@ static char ja_kvoContext;
         [self _animateCenterPanel:shouldBounce completion:nil];
     } else {
         self.centerPanelContainer.frame = _centerPanelRestingFrame;
+        self.centerPanel.view.transform = CGAffineTransformMakeScale(self.scalingPercentage, self.scalingPercentage);
         [self styleContainer:self.centerPanelContainer animate:NO duration:0.0f];
         if (self.style == JASidePanelMultipleActive) {
             [self _layoutSideContainers:NO duration:0.0f];
@@ -874,6 +876,7 @@ static char ja_kvoContext;
         }];
     } else {
         self.centerPanelContainer.frame = _centerPanelRestingFrame;
+        self.centerPanel.view.transform = CGAffineTransformIdentity;
         [self styleContainer:self.centerPanelContainer animate:NO duration:0.0f];
         if (self.style == JASidePanelMultipleActive) {
             [self _layoutSideContainers:NO duration:0.0f];
