@@ -726,6 +726,14 @@ static char ja_kvoContext;
     CGFloat duration = [self _calculatedDuration];
     [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveLinear|UIViewAnimationOptionLayoutSubviews animations:^{
         self.centerPanelContainer.frame = _centerPanelRestingFrame;
+        
+        if (self.state == JASidePanelLeftVisible) {
+          self.centerPanel.view.transform = CGAffineTransformMakeScale(0.8, 0.8);
+        }
+        else {
+          self.centerPanel.view.transform = CGAffineTransformIdentity;
+        }
+        
         [self styleContainer:self.centerPanelContainer animate:YES duration:duration];
         if (self.style == JASidePanelMultipleActive) {
             [self _layoutSideContainers:NO duration:0.0f];
