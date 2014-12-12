@@ -357,7 +357,7 @@ static char ja_kvoContext;
         }
     }
     if (self.isViewLoaded && self.state == JASidePanelCenterVisible) {
-        [self _swapCenter:previous previousState:0 with:_centerPanel];
+        [self _swapCenter:previous previousState:0 with:centerPanel];
     } else if (self.isViewLoaded) {
         // update the state immediately to prevent user interaction on the side panels while animating
         JASidePanelState previousState = self.state;
@@ -370,7 +370,7 @@ static char ja_kvoContext;
             }
             self.centerPanelContainer.frame = _centerPanelRestingFrame;
         } completion:^(__unused BOOL finished) {
-            [self _swapCenter:previous previousState:previousState with:_centerPanel];
+            [self _swapCenter:previous previousState:previousState with:centerPanel];
             [self _showCenterPanel:YES bounce:NO];
         }];
     }
